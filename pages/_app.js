@@ -33,6 +33,8 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, shopOrigin } = this.props;
 
+    console.log(pageProps);
+
     const config = { apiKey: API_KEY, shopOrigin, forceRedirect: true };
     return (
       <React.Fragment>

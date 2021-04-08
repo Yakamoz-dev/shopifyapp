@@ -36,7 +36,7 @@ class Index extends React.Component {
               }}
               image={img}
             >
-              <p><a href="https://member.waterdropfilter.com/annotated-layout">Select products to change their price temporarily.</a></p>
+              <p>Select products to change their price temporarily.</p>
             </EmptyState>
           </Layout>
         ) : (

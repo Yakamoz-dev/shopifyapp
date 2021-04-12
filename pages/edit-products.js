@@ -31,6 +31,7 @@ const UPDATE_PRICE = gql`
 `;
 
 class EditProduct extends React.Component {
+  
   state = {
     discount: "",
     price: "",
@@ -132,4 +133,8 @@ class EditProduct extends React.Component {
   };
 }
 
-export default EditProduct;
+export default connect(
+  state => state,
+  dispatch => ({ actions: bindActionCreators({ increment, decrement }, dispatch) })
+)(EditProduct)
+

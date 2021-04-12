@@ -1,0 +1,5 @@
+export const INCREMENT = 'INCREMENT'
+export const DECREMENT = 'DECREMENT'
+export const LOAD = 'REDUCER::LOAD'
+export const UNLOAD = 'REDUCER::LOAD_COMPLETE'
+export const LOAD_COMPLETE = 'APICLIENT::UNLOAD'

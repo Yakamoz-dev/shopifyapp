@@ -4,11 +4,19 @@ import { ResourcePicker, TitleBar } from "@shopify/app-bridge-react";
 import store from "store-js";
 import ResourceListWithProducts from "../components/ResourceList";
 
+import { connect } from 'react-redux'
+import { increment, decrement } from '../src/actions'
+import { bindActionCreators } from 'redux'
+import { INCREMENT } from '../src/constants'
+
+
 const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
 class Index extends React.Component {
+  
   state = { open: false };
   render() {
+    console.log(this.props)
     const emptyState = !store.get("ids");
     return (
       <Page>
@@ -52,4 +60,17 @@ class Index extends React.Component {
   };
 }
 
-export default Index;
+Index.getInitialProps = ({ store }) => {
+  store.dispatch({
+    type: INCREMENT,
+    from: 'server'
+  })
+
+  return {}
+}
+
+export default connect(
+  state => state,
+  dispatch => ({ actions: bindActionCreators({ increment, decrement }, dispatch) })
+)(Index)
+

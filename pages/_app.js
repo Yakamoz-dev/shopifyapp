@@ -10,6 +10,8 @@ import ClientRouter from "../components/ClientRouter";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
+import wrapper from '../src/store'
+
 
 class MyProvider extends React.Component {
   static contextType = Context;
@@ -32,11 +34,11 @@ class MyProvider extends React.Component {
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps, shopOrigin } = this.props;
+    const { Component, pageProps } = this.props;
 
     console.log(pageProps);
 
-    const config = { apiKey: API_KEY, shopOrigin, forceRedirect: true };
+    const config = { apiKey: API_KEY, shopOrigin:pageProps.shopOrigin, forceRedirect: true };
     return (
       <React.Fragment>
         <Head>
@@ -69,4 +71,5 @@ MyApp.getInitialProps = async ({ Component,ctx }) => {
   };
 };
 
-export default withRedux(initializeStore)(MyApp);
+export default wrapper.withRedux(MyApp)
+

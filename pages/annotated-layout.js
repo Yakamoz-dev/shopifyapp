@@ -1,4 +1,8 @@
 import React from "react";
+import { connect } from 'react-redux'
+import { increment, decrement } from '../src/actions'
+import { bindActionCreators } from 'redux'
+import { INCREMENT } from '../src/constants'
 import {
   Button,
   Card,
@@ -19,12 +23,14 @@ class AnnotatedLayout extends React.Component {
   };
 
   render() {
+    console.log(this.props)
     const { discount, enabled } = this.state;
     const contentStatus = enabled ? "Disable" : "Enable";
     const textStatus = enabled ? "enabled" : "disabled";
 
     return (
       <Page>
+        <h1>{this.props.value}</h1>
         <Layout>
           <Layout.AnnotatedSection
             title="Default discount"
@@ -86,4 +92,16 @@ class AnnotatedLayout extends React.Component {
   };
 }
 
-export default AnnotatedLayout;
+AnnotatedLayout.getInitialProps = ({ store }) => {
+  store.dispatch({
+    type: INCREMENT,
+    from: 'server'
+  })
+
+  return {}
+}
+
+export default connect(
+  state => state,
+  dispatch => ({ actions: bindActionCreators({ increment, decrement }, dispatch) })
+)(AnnotatedLayout)

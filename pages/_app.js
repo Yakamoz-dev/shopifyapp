@@ -10,6 +10,11 @@ import ClientRouter from "../components/ClientRouter";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
+
+import {Provider as ProviderRe} from 'react-redux'
+import withRedux from 'next-redux-wrapper'
+import { initializeStore } from '../_store/store'
+
 class MyProvider extends React.Component {
   static contextType = Context;
 
@@ -42,23 +47,28 @@ class MyApp extends App {
           <title>Sample App</title>
           <meta charSet="utf-8" />
         </Head>
-        <Provider config={config}>
-          <ClientRouter />
-          <AppProvider i18n={translations}>
-            <MyProvider>
-              <Component {...pageProps} />
-            </MyProvider>
-          </AppProvider>
-        </Provider>
+        <ProviderRe>
+          <Provider config={config}>
+            <ClientRouter />
+            <AppProvider i18n={translations}>
+              <MyProvider>
+                <Component {...pageProps} />
+              </MyProvider>
+            </AppProvider>
+          </Provider>
+        </ProviderRe>
+        
       </React.Fragment>
     );
   }
 }
 
-MyApp.getInitialProps = async ({ ctx }) => {
+MyApp.getInitialProps = async ({ Component,ctx }) => {
+  const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
   return {
+    pageProps,
     shopOrigin: ctx.query.shop,
   };
 };
 
-export default MyApp;
+export default withRedux(initializeStore)(MyApp);

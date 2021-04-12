@@ -7,11 +7,13 @@ import { counter, initialState } from '../reducers'
 const makeStore = () => {
   const composeEnhancers = process.env.NODE_ENV !== 'production' ? composeWithDevTools : compose
 
+
   return createStore(
     counter,
     initialState,
     composeEnhancers(applyMiddleware(thunk))
   )
+  
 }
 
 export default createWrapper(makeStore, {debug: true})

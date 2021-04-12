@@ -36,7 +36,7 @@ class MyProvider extends React.Component {
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps, shopOrigin } = this.props;
+    const { Component, pageProps, shopOrigin,store } = this.props;
 
     console.log(pageProps);
 
@@ -47,7 +47,7 @@ class MyApp extends App {
           <title>Sample App</title>
           <meta charSet="utf-8" />
         </Head>
-        <ProviderRe>
+        <ProviderRe store={store}>
           <Provider config={config}>
             <ClientRouter />
             <AppProvider i18n={translations}>

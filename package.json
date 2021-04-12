@@ -21,6 +21,8 @@
     "apollo-boost": "^0.4.9",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
+    "immer": "^9.0.1",
+    "immer-combine-reducers": "^1.0.1",
     "isomorphic-fetch": "^3.0.0",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
@@ -38,3 +40,4 @@
     "webpack": "^4.46.0"
   }
 }
+

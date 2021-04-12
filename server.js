@@ -3,8 +3,7 @@ const dotenv = require("dotenv");
 const Koa = require("koa");
 const next = require("next");
 const { default: createShopifyAuth } = require("@shopify/koa-shopify-auth");
-// const { verifyRequest } = require("@shopify/koa-shopify-auth");
-import shopifyAuth, {verifyRequest} from '@shopify/koa-shopify-auth'
+const { verifyRequest } = require("@shopify/koa-shopify-auth");
 const { default: Shopify, ApiVersion } = require("@shopify/shopify-api");
 const Router = require("koa-router");
 const getSubscriptionUrl = require("./server/getSubscriptionUrl");

@@ -9,7 +9,7 @@ const { default: Shopify, ApiVersion } = require("@shopify/shopify-api");
 const Router = require("koa-router");
 const getSubscriptionUrl = require("./server/getSubscriptionUrl");
 
-import session from 'koa-session';
+const session = require('koa-session');
 
 dotenv.config();
 

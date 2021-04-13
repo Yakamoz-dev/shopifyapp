@@ -24,7 +24,7 @@ class AnnotatedLayout extends React.Component {
 
   render() {
     const { Component, pageProps } = this.props;
-    console.log('888',this.props)
+    console.log('888',pageProps)
     const { discount, enabled } = this.state;
     const contentStatus = enabled ? "Disable" : "Enable";
     const textStatus = enabled ? "enabled" : "disabled";

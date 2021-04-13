@@ -16,6 +16,7 @@ class Index extends React.Component {
   
   state = { open: false };
   render() {
+    const { Component, pageProps } = this.props;
     console.log('9999999',this.props)
     const emptyState = !store.get("ids");
     return (
@@ -60,16 +61,12 @@ class Index extends React.Component {
   };
 }
 
-Index.getInitialProps = ({ store,ctx }) => {
+Index.getInitialProps = ({ store }) => {
   store.dispatch({
     type: INCREMENT,
     from: 'server'
   })
-
-  return {
-      shopOrigin: ctx.query.shop
-    
-  }
+  return {}
 }
 
 export default connect(

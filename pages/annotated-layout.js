@@ -24,7 +24,6 @@ class AnnotatedLayout extends React.Component {
 
   render() {
     console.log('888',this.props)
-    console.log('888-1',this.pageProps)
     const { discount, enabled } = this.state;
     const contentStatus = enabled ? "Disable" : "Enable";
     const textStatus = enabled ? "enabled" : "disabled";
@@ -100,10 +99,7 @@ AnnotatedLayout.getInitialProps = ({ store,ctx }) => {
   })
 
   return {
-    pageProps:{
-      ...pageProps,
       shopOrigin: ctx.query.shop
-    }
   }
 }
 

@@ -17,7 +17,6 @@ class Index extends React.Component {
   state = { open: false };
   render() {
     console.log('9999999',this.props)
-    console.log('9999999-1',this.pageProps)
     const emptyState = !store.get("ids");
     return (
       <Page>
@@ -68,10 +67,8 @@ Index.getInitialProps = ({ store,ctx }) => {
   })
 
   return {
-    pageProps:{
-      ...pageProps,
       shopOrigin: ctx.query.shop
-    }
+    
   }
 }
 

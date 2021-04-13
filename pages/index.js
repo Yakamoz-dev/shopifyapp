@@ -16,7 +16,7 @@ class Index extends React.Component {
   
   state = { open: false };
   render() {
-    console.log(this.props)
+    console.log('9999999',this.props)
     const emptyState = !store.get("ids");
     return (
       <Page>
